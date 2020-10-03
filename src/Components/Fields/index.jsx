@@ -97,13 +97,13 @@ export const SubmitButton = ({ onClick, ...otherProps }) => (
 
 export const FbButton = ({ onClick, ...otherProps }) => (
   <div className="field_container">
-    <button className="fb_btn" onClick={onClick} {...otherProps}><i class="fab fa-facebook"></i>Continue with Facebook</button>
+    <button className="fb_btn" onClick={onClick} {...otherProps}><i className="fab fa-facebook"></i>Continue with Facebook</button>
   </div>
 );
 
 export const GoogleButton = ({ onClick, ...otherProps }) => (
   <div className="field_container">
-    <button className="google_btn" onClick={onClick} {...otherProps}><i class="fab fa-google"></i>Continue with Google</button>
+    <button className="google_btn" onClick={onClick} {...otherProps}><i className="fab fa-google"></i>Continue with Google</button>
   </div>
 );
 

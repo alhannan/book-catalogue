@@ -6,12 +6,12 @@ function SignInPage() {
   return (
     <div className="container">
       <div className="container__block">
-        <h1>Sign In</h1>
-        {/* <input type="text" /> */} 
+        <h1>Book Catalogue</h1>
+        <h3>Sign in</h3>
         <RenderInput type="text" placeholder="Email" autoComplete="off"/>
         <RenderInput type="password" placeholder="Password" autoComplete="off"/>
         <br/>
-        <SubmitButton value="Sign In" />
+        <SubmitButton value="Sign in" />
         <p>or</p>
         <FbButton value="Continue with Facebook"/>
         <GoogleButton value="Continue with Google"/>
