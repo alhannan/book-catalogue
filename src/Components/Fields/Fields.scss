@@ -1,0 +1,67 @@
+@import '../../Styles/colors.scss';
+
+.field_container {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: 0.5vw;
+
+  label {
+    color: $colorTertiary;
+    line-height: 18px;
+    font-weight: 500;
+    font-weight: normal;
+    font-size: 14px;
+    margin: 2px;
+
+  }
+
+  input {
+    padding: 2vh;
+    border-radius: 5px;
+    border: 2px solid $colorSecondary;
+    box-sizing: border-box;
+    background: none;
+    &:focus {
+      outline: none;
+      border: 2px solid $colorPrimary;
+    }
+    &::placeholder {
+      color: $colorTextSecondary;
+    }
+  }
+
+  .submit_btn {
+    background: $colorPrimary;
+    border-radius: 5px;
+    color: white;
+    padding-left: 0;
+    border: 0px;
+    font-size: 1.1vw;
+    cursor: pointer;
+    &:focus {
+      border: 0px;
+    }
+  }
+
+  .fb_btn {
+    @extend .submit_btn;
+    @extend input;
+    background: #4267B2;
+    i {
+      margin-right: 1vw;
+    }
+  }
+
+  .google_btn {
+    @extend .submit_btn;
+    @extend input;
+    background: #DB4437;
+    i {
+      margin-right: 1vw;
+    }
+  }
+}
+
+
+
