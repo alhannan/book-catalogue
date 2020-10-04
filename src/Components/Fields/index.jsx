@@ -1,6 +1,5 @@
 import React from "react";
 // import { DropdownList } from "react-widgets";
-
 import "./Fields.scss";
 
 // export const renderDropdownList = ({
@@ -70,13 +69,14 @@ export const RenderInput = ({
   placeholder,
   className,
   onChange,
+  labelActive,
   autoComplete,
   value,
   type,
   name,
 }) => (
   <div className="field_container">
-    <label>{name}</label>
+    <label>{labelActive && name}</label>
     <input
       autoComplete={autoComplete}
       placeholder={placeholder}
@@ -91,22 +91,31 @@ export const RenderInput = ({
 
 export const SubmitButton = ({ onClick, ...otherProps }) => (
   <div className="field_container">
-    <input type="submit" value="Submit" className="submit_btn" onClick={onClick} {...otherProps}/>
+    <input
+      type="submit"
+      value="Submit"
+      className="submit_btn"
+      onClick={onClick}
+      {...otherProps}
+    />
   </div>
 );
 
 export const FbButton = ({ onClick, ...otherProps }) => (
   <div className="field_container">
-    <button className="fb_btn" onClick={onClick} {...otherProps}><i className="fab fa-facebook"></i>Continue with Facebook</button>
+    <button className="fb_btn" onClick={onClick} {...otherProps}>
+      <i className="fab fa-facebook"></i>Continue with Facebook
+    </button>
   </div>
 );
 
 export const GoogleButton = ({ onClick, ...otherProps }) => (
   <div className="field_container">
-    <button className="google_btn" onClick={onClick} {...otherProps}><i className="fab fa-google"></i>Continue with Google</button>
+    <button className="google_btn" onClick={onClick} {...otherProps}>
+      <i className="fab fa-google"></i>Continue with Google
+    </button>
   </div>
 );
-
 
 export const renderIconInput = ({
   placeholder,

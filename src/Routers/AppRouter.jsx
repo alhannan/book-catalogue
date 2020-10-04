@@ -10,8 +10,8 @@ function AppRouter() {
     <>
       <Router>
         <Switch>
-          <PublicRoute path="/" exact component={SignInPage} />
           <PrivateRoute path="/home" component={HomePage} />
+          <PublicRoute exact path="/" component={SignInPage} />
         </Switch>
       </Router>
     </>

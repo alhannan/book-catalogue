@@ -1,0 +1,24 @@
+@import "../../Styles/colors.scss";
+
+.card_btn {
+  // width: 10vw;
+  padding: 1.1vw;
+  margin: 1.4vw;
+  font-size: large;
+  font-weight: 600;
+  background: transparent;
+  border-radius: 5px;
+  color: $colorPrimary;
+  border: 2px solid $colorPrimary;
+  cursor: pointer;
+  outline: none;
+  
+  box-shadow: 1px 1px 3px #888888d8;
+
+}
+
+.selected {
+  @extend .card_btn;
+  color: white;
+  background-color: $colorPrimary;
+}
