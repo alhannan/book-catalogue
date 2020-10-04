@@ -1,11 +1,11 @@
 import React from 'react'
 import "./BookDetails.scss";
 
-function BookDetails({ isSelected }) {
+function BookDetails({ isSelected, close }) {
 
-  return ( 
+  return ( isSelected &&
     <div className={`book_details ${isSelected ? "show" : "hide"} `} >
-      <i className="far fa-times-circle fa-3x" ></i>
+      <i className="far fa-times-circle fa-3x" onClick={close}></i>
       <h1>The Long Universe</h1>
       <h3>Sci-Fi</h3>
       <h3>Terry Pratchett</h3>

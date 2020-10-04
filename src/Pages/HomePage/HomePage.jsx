@@ -1,18 +1,28 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../Actions/auth.js";
+import { getBooks } from "../../Actions/books";
 import "./HomePage.styles.scss";
 import CardBtn from "../../Components/CardBtn/CardBtn";
 import BookDetails from "../../Components/BookDetails/BookDetails";
 
 function HomePage() {
   const dispatch = useDispatch();
+  const books = useSelector((state) => Object.values(state.books));
 
   const [bookSelected, setBookSelected] = useState(false);
 
-  const handleClick = () => {
-    setBookSelected(!bookSelected);
+  const handleClick = (id) => {
+    setBookSelected(id);
   };
+  
+  const handleClose = () => {
+    setBookSelected("");
+  };
+
+  useEffect(() => {
+    dispatch(getBooks());
+  }, [dispatch]);
 
   return (
     <div className="home">
@@ -25,23 +35,19 @@ function HomePage() {
         </div>
 
         <div className="home__main__cardbtns">
-          <CardBtn
-            bookName="The Long Earth"
-            selected={`${bookSelected && "selected"}`}
-            onClick={handleClick}
-          />
-          <CardBtn bookName="The Colour of Magic" />
-          <CardBtn bookName="The Light Fantastic" />
-          <CardBtn bookName="The Final Empire" />
-          <CardBtn bookName="The Hero of Ages" />
-          <CardBtn bookName="The Name of the Wind" />
-          <CardBtn bookName="Hogfather" />
-          <CardBtn bookName="Thud" />
-          <CardBtn bookName="The Long Universe" />
+          {books.map(({ name, id}) => (
+            <CardBtn
+              key={id}
+              bookName={name}
+              selected={`${bookSelected === id ? "selected" : ""}`}
+              onClick={() => handleClick(id)}
+            />
+          ))}
         </div>
       </div>
 
-      <BookDetails isSelected={bookSelected} />
+      <BookDetails isSelected={bookSelected} close={handleClose} />
+
       {/* {sticky adding card} */}
     </div>
   );
