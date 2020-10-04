@@ -1,7 +1,6 @@
 @import "../../Styles/colors.scss";
 
 .book_details {
-  
   transition: all 200ms ease-in-out;
   height: 100%;
   background-color: $colorPrimary;
@@ -19,7 +18,7 @@
   }
 
   h3 {
-    font-weight:600;
+    font-weight: 600;
     margin-bottom: 3.5vh;
   }
 
@@ -28,7 +27,6 @@
     li {
       margin-bottom: 1vh;
       font-size: 18px;
-
     }
   }
 
@@ -37,9 +35,12 @@
     width: 50px;
     align-self: flex-end;
     margin-right: 2vw;
-
   }
 
+  .detailsSpinner {
+    padding-top: 15vh;
+    padding-left: 12vw;
+  }
 }
 
 .show {
@@ -51,5 +52,3 @@
   flex: 0;
   opacity: 0;
 }
-
-

@@ -13,9 +13,8 @@ body {
 }
 
 .spinner {
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
+  position: absolute;
+  top: 48vh;
+  left: 48vw;
 }
 

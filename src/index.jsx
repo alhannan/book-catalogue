@@ -13,14 +13,13 @@ import { userDetail } from "./Actions/auth";
 const store = configureStore();
 
 ReactDOM.render(
-  <div className="spinner">
     <Loader
       type="Puff"
       color="#ce4076"
       height={60}
       width={60}
-    />
-  </div>,
+      className="spinner"
+    />,
   document.getElementById("root")
 );
 

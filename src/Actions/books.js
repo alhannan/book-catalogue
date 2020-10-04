@@ -1,5 +1,5 @@
 import { firestore } from "../Firebase/index";
-import { GET_BOOKS } from "./types";
+import { GET_BOOKS, GET_BOOK_DETAILS, REMOVE_BOOK_DETAILS } from "./types";
 
 export const getBooks = () => async (dispatch) => {
   try {
@@ -9,6 +9,7 @@ export const getBooks = () => async (dispatch) => {
     books.forEach((doc) => {
       booksArray.push({ id: doc.id, ...doc.data() });
     });
+    
     dispatch({
       type: GET_BOOKS,
       payload: booksArray,
@@ -17,3 +18,23 @@ export const getBooks = () => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const getBookDetails = (id) => async (dispatch) => {
+  try {
+
+    const book = await (await firestore.collection("books").doc(id).get()).data();
+    dispatch({
+      type: GET_BOOK_DETAILS,
+      payload: book,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const removeBookDetails = (id) => (dispatch) => {
+  dispatch({
+    type: REMOVE_BOOK_DETAILS,
+    payload: id
+  })
+}
