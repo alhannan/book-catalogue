@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../Actions/auth.js";
-import { getBooks, getBookDetails, removeBookDetails } from "../../Actions/books";
+import {
+  getBooks,
+  getBookDetails,
+  removeBookDetails,
+} from "../../Actions/books";
 import "./HomePage.styles.scss";
 import CardBtn from "../../Components/CardBtn/CardBtn";
 import BookDetails from "../../Components/BookDetails/BookDetails";
 
+import { useSpring, animated } from "react-spring";
 import Loader from "react-loader-spinner";
 
 function HomePage() {
@@ -18,15 +23,19 @@ function HomePage() {
 
   const [bookSelected, setBookSelected] = useState(false);
 
+  const animation = useSpring(
+    bookSelected ? { opacity: 1, flex: 1 } : { opacity: 0, flex: 0 }
+  );
+
   const handleClick = (id) => {
-    dispatch(removeBookDetails())
+    dispatch(removeBookDetails());
     setBookSelected(id);
     dispatch(getBookDetails(id));
   };
 
   const handleClose = () => {
     setBookSelected("");
-    dispatch(removeBookDetails())
+    dispatch(removeBookDetails());
   };
 
   useEffect(() => {
@@ -65,13 +74,15 @@ function HomePage() {
         )}
       </div>
 
-      <BookDetails
-        isSelected={bookSelected}
-        close={handleClose}
-        name={name}
-        author={author}
-        genre={genre}
-      />
+      <animated.div style={animation}>
+        <BookDetails
+          isSelected={bookSelected}
+          close={handleClose}
+          name={name}
+          author={author}
+          genre={genre}
+        />
+      </animated.div>
 
       {/* {sticky adding card} */}
     </div>
