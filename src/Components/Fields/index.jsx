@@ -74,9 +74,10 @@ export const RenderInput = ({
   value,
   type,
   name,
+  card
 }) => (
-  <div className="field_container">
-    <label>{labelActive && name}</label>
+  <div className={`${card ? "field_container_row" : "field_container"}`}>
+    <label for={name}>{labelActive && name}</label>
     <input
       autoComplete={autoComplete}
       placeholder={placeholder}

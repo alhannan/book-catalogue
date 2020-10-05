@@ -1,0 +1,27 @@
+@import "../../Styles/colors.scss";
+
+.addBook {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: white;
+  position: absolute;
+  bottom: 0;
+  width: 35vw;
+  height: 20vw;
+  border-radius: 0px 10px 0px 0px;
+  box-shadow: 1px 0px 6px #8888883b;
+  input {
+    align-self: flex-end;
+    width: 15vw;
+  }
+}
+
+.fas {
+  color: $colorPrimary;
+  align-self: flex-start;
+  margin-left: 2vw;
+  margin-bottom: 1.5vw;
+  cursor: pointer;
+}

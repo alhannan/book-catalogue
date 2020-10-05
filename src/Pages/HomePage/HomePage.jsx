@@ -9,6 +9,7 @@ import {
 import "./HomePage.styles.scss";
 import CardBtn from "../../Components/CardBtn/CardBtn";
 import BookDetails from "../../Components/BookDetails/BookDetails";
+import AddBookCard from "../../Components/AddBookCard/AddBookCard";
 
 import { useSpring, animated } from "react-spring";
 import Loader from "react-loader-spinner";
@@ -84,7 +85,7 @@ function HomePage() {
         />
       </animated.div>
 
-      {/* {sticky adding card} */}
+      <AddBookCard />
     </div>
   );
 }
