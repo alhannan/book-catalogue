@@ -1,69 +1,24 @@
 import React from "react";
-// import { DropdownList } from "react-widgets";
 import "./Fields.scss";
+import { Field } from "redux-form";
 
-// export const renderDropdownList = ({
-//   onChange,
-//   data,
-//   valueField,
-//   textField,
-//   placeholder,
-//   value,
-//   type,
-//   label,
-//   dropUp,
-// }) => {
-//   switch (type) {
-//     case "label":
-//       return (
-//         <div className="label-dropdown">
-//           <DropdownList
-//             data={data}
-//             valueField={valueField}
-//             textField={textField}
-//             onChange={onChange}
-//             placeholder={placeholder}
-//             value={value}
-//             dropUp={dropUp && true}
-//             valueComponent={({ item }) => (
-//               <span className="flex-row">
-//                 <p className="p2 tertiary-text">{label}:</p>
-//                 {/* <p className="p2 primary-text">{item[textField]}</p> */}
-//               </span>
-//             )}
-//           />
-//         </div>
-//       );
-//     case "products":
-//       return (
-//         <div className={`simple-dropdown_products ${dropUp ? "dropdown-dropUp" : ""}`}>
-//           <DropdownList
-//             data={data}
-//             valueField={valueField}
-//             textField={textField}
-//             onChange={onChange}
-//             placeholder={placeholder}
-//             value={value}
-//             dropUp={dropUp && true}
-//           />
-//         </div>
-//       );
-//     default:
-//       return (
-//         <div className={`simple-dropdown ${dropUp ? "dropdown-dropUp" : ""}`}>
-//           <DropdownList
-//             data={data}
-//             valueField={valueField}
-//             textField={textField}
-//             onChange={onChange}
-//             placeholder={placeholder}
-//             value={value}
-//             dropUp={dropUp && true}
-//           />
-//         </div>
-//       );
-//   }
-// };
+export const RenderDropdownList = ({ onChange, data, label, name }) => {
+  return (
+    <div className="field_container_row">
+      <label htmlFor={name}>{label}</label>
+      <Field component="select" name={name} onChange={onChange}>
+        <option value="">Choose an Author: </option>
+        {data &&
+          data.map(({name, id}) => (
+            <option key={id} value={id}>
+              {name}
+            </option>
+          ))}
+        <option value="add">Add an Author</option>
+      </Field>
+    </div>
+  );
+};
 
 export const RenderInput = ({
   placeholder,
@@ -74,10 +29,11 @@ export const RenderInput = ({
   value,
   type,
   name,
-  card
+  card,
+  addButton,
 }) => (
   <div className={`${card ? "field_container_row" : "field_container"}`}>
-    <label for={name}>{labelActive && name}</label>
+    <label htmlFor={name}>{labelActive && name}</label>
     <input
       autoComplete={autoComplete}
       placeholder={placeholder}
@@ -87,6 +43,35 @@ export const RenderInput = ({
       type={type}
       name={name}
     />
+    {addButton && <i className="fas fa-plus-circle fa-2x"></i>}
+  </div>
+);
+
+export const RenderReduxInput = ({
+  placeholder,
+  className,
+  onChange,
+  labelActive,
+  autoComplete,
+  value,
+  name,
+  card,
+  addButton,
+  label,
+  onClick
+}) => (
+  <div className={`${card ? "field_container_row" : "field_container"}`}>
+    <label htmlFor={name}>{labelActive && label}</label>
+    <Field
+      autoComplete={autoComplete}
+      placeholder={placeholder}
+      className={className}
+      onChange={onChange}
+      value={value}
+      component="input"
+      name={name}
+    />
+    {addButton && <i className="fas fa-plus-circle fa-2x" onClick={onClick}></i>}
   </div>
 );
 
@@ -115,27 +100,5 @@ export const GoogleButton = ({ onClick, ...otherProps }) => (
     <button className="google_btn" onClick={onClick} {...otherProps}>
       <i className="fab fa-google"></i>Continue with Google
     </button>
-  </div>
-);
-
-export const renderIconInput = ({
-  placeholder,
-  className,
-  onChange,
-  autoComplete,
-  value,
-  type,
-  iconName,
-}) => (
-  <div className="input-container">
-    <input
-      autoComplete={autoComplete}
-      placeholder={placeholder}
-      className={className}
-      onChange={onChange}
-      value={value}
-      type={type}
-    />
-    <div className={`icon ${iconName}`} />
   </div>
 );

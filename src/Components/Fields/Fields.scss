@@ -16,7 +16,7 @@
 
   }
 
-  input {
+  input, select {
     padding: 2vh;
     border-radius: 5px;
     border: 2px solid $colorSecondary;
@@ -29,6 +29,10 @@
     &::placeholder {
       color: $colorTextSecondary;
     }
+  }
+
+  select {
+    width: 54%;
   }
 
   .submit_btn {
@@ -67,6 +71,12 @@
   @extend .field_container;
   flex-direction: row;
   justify-content: flex-end;
+  
+  i {
+    position: absolute;
+    right: 7px;
+    bottom: 10vh;
+  }
 }
 
 

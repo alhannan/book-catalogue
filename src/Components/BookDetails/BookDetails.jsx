@@ -3,7 +3,7 @@ import "./BookDetails.scss";
 
 import Loader from "react-loader-spinner";
 
-function BookDetails({ isSelected, close, name, author, genre }) {
+function BookDetails({ isSelected, close, name, author, genre, authorBooks }) {
   return (
     isSelected && (
       <div className={`book_details ${isSelected ? "show" : "hide"} `}>
@@ -15,12 +15,9 @@ function BookDetails({ isSelected, close, name, author, genre }) {
             <h3>{author?.name}</h3>
             <h3>All Books by this Author: </h3>
             <ul>
-              <li>The Long Earth</li>
-              <li>The Color of Magic</li>
-              <li>The Light Fantastic</li>
-              <li>Hogfather</li>
-              <li>Thud</li>
-              <li>The Long Universe</li>
+              {authorBooks.map(({ id, name }) => (
+                <li key={id}>{name}</li>
+              ))}
             </ul>
           </>
         ) : (

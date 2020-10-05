@@ -5,6 +5,7 @@ import {
   getBooks,
   getBookDetails,
   removeBookDetails,
+  addBook
 } from "../../Actions/books";
 import "./HomePage.styles.scss";
 import CardBtn from "../../Components/CardBtn/CardBtn";
@@ -18,7 +19,7 @@ function HomePage() {
   const dispatch = useDispatch();
 
   const books = useSelector((state) => Object.values(state.books.allBooks));
-  const { name, author, genre } = useSelector(
+  const { name, author, genre, authorBooks } = useSelector(
     (state) => state.books.selectedBook
   );
 
@@ -38,6 +39,11 @@ function HomePage() {
     setBookSelected("");
     dispatch(removeBookDetails());
   };
+  
+  const handleAddBook = () => {
+    dispatch(addBook())
+    setTimeout(() => dispatch(getBooks()), 700);
+  }
 
   useEffect(() => {
     dispatch(getBooks());
@@ -82,10 +88,11 @@ function HomePage() {
           name={name}
           author={author}
           genre={genre}
+          authorBooks={authorBooks}
         />
       </animated.div>
 
-      <AddBookCard />
+      <AddBookCard handleAdd={handleAddBook}/>
     </div>
   );
 }
